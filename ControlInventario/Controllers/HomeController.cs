@@ -10,7 +10,11 @@ namespace ControlInventario.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if (User.Identity.IsAuthenticated) {
+                return RedirectToAction("Index", "principal");
+            }
+                return View();
+
         }
 
         public ActionResult About()
