@@ -1,0 +1,82 @@
+﻿@model IEnumerable<ControlInventario.Models.productos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Añadir producto", "Create")
+</p>
+<table class="table table-sm" id="myProducts">
+    <thead>
+        <tr>
+            <th>
+                Id Producto
+            </th>
+            <th>
+                Código
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Descripción
+            </th>
+            <th>
+                Cantidad
+            </th>
+            <th>
+                Precio
+            </th>
+            <th>
+                Proveedor
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                <a href="@Url.Action("productbySupplier","productos", new { supplierId=item.supplierId})">
+                    @item.proveedores.supplierName
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.supplierId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.productId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.productId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.productId })
+            </td>
+        </tr>
+        }
+    </tbody>
+       
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+    $(document).ready(function () {
+        $('#myProducts').DataTable();
+    });
+    </script>
+}
