@@ -10,6 +10,7 @@ using ControlInventario.Models;
 
 namespace ControlInventario.Controllers
 {
+    [Authorize]
     public class productosController : Controller
     {
         private productoscontextdb db = new productoscontextdb();

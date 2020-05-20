@@ -7,8 +7,40 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create","proveedores")" class="btn btn-primary btn-sm btn-icon-split">
+        @"Íconos en fontawesome"@
+        <span class="icon text-white-50"><i class="fas fa-plus"></i></span>
+        <span class="text">Nuevo proveedor</span>
+    </a>
 </p>
+
+<div class="row justify-content-center">
+    <p>
+        Lista de Proveedores
+    </p>
+</div>
+
+<div class="row">
+    @foreach (var Item in Model) { 
+    <div class="col-xl-3 col-md-6 mb-4">
+        <a href="@Url.Action("Details","proveedores", new { id=Item.supplierId})">content</a>
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">@Item.supplierName</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@Item.supplierCode</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-store fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
 <table class="table">
     <tr>
         <th>
@@ -47,9 +79,6 @@
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Phone)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Address)
     </td>
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.supplierId }) |
