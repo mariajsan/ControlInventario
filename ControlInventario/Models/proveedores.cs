@@ -9,19 +9,19 @@ namespace ControlInventario.Models
     public class proveedores
     {
         [Key]
-        public int supplierId { get; set; }
         [Display(Name = "Código")]
-        public string supplierCode { get; set; }
+        public int supplierId { get; set; }
         [Display(Name = "Identificación")]
-        public string supplierName { get; set; }
+        public string supplierCode { get; set; }
         [Display(Name = "Nombre")]
+        public string supplierName { get; set; }
 
-        public string Email { get; set; }
         [Display(Name = "Correo electrónico")]
-        public string Phone { get; set; }
+        public string Email { get; set; }
         [Display(Name = "Teléfono")]
-        public string Address { get; set; }   
-        //[Display(Name = "Dirección")]
+        public string Phone { get; set; }
+        [Display(Name = "Dirección")]
+        public string Address { get; set; }        
 
     }
 }
